@@ -1,0 +1,80 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="P2.Site1" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>P2</title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="Content/font-awesome.min.css" rel="stylesheet" />
+
+    <script src="Scripts/jquery-3.0.0.min.js"></script>
+    <script src="Scripts/popper.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+    <style type="text/css">
+        .messagealert {
+            width: 100%;
+            position: sticky;
+            top:75px;
+            z-index: 100000;
+            padding: 0;
+            font-size: 15px;
+        }
+    </style>
+    <script type="text/javascript">
+        function ShowMessage(message, messagetype) {
+            var cssclass;
+            switch (messagetype) {
+                case 'Success':
+                    cssclass = 'alert-success'
+                    break;
+                case 'Error':
+                    cssclass = 'alert-danger'
+                    break;
+                case 'Warning':
+                    cssclass = 'alert-warning'
+                    break;
+                default:
+                    cssclass = 'alert-info'
+            }
+            $('#alert_container').append('<div id="alert_div" style="margin: 0 0.5%; -webkit-box-shadow: 3px 4px 6px #999;" class="alert alert-dismissible fade show ' + cssclass + '"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>' + messagetype + '!</strong> <span>' + message + '</span></div>');
+        }
+    </script>
+</head>
+<body>
+    
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <a class="navbar-brand" href="#">Incripciones</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="/">Inscripciones <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/ListadoAlumnos.aspx">Listado</a>
+              </li>
+              
+            </ul>
+            
+          </div>
+        </nav>
+        <hr />
+
+      
+        <div class="container-fluid">
+            <div class="messagealert" id="alert_container"></div>
+            <form id="form1" runat="server">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
